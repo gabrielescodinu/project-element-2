@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="block-scroll">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Element</title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- swiper -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- hamburgers -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css" integrity="sha512-+mlclc5Q/eHs49oIOCxnnENudJWuNqX5AogCiqRBgKnpoplPzETg2fkgBFVC6WYUVxYYljuxPNG8RE7yBy1K+g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300;400&display=swap" rel="stylesheet">
+    <!-- custom style -->
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <!-- loader -->
+    <div id="loader" class=" bg-template-dark h-screen swipe absolute w-screen top-0 z-50 flex flex-col justify-center">
+        <div class="loader mx-auto transform scale-[300%] mt-40 loader--style8" title="7">
+            <svg class="mx-auto" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+            width="24px" height="30px" viewBox="0 0 24 30" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <rect x="0" y="10" width="4" height="10" fill="#333" opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            <rect x="8" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.15s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            <rect x="16" y="10" width="4" height="10" fill="#333"  opacity="0.2">
+                <animate attributeName="opacity" attributeType="XML" values="0.2; 1; .2" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="height" attributeType="XML" values="10; 20; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+                <animate attributeName="y" attributeType="XML" values="10; 5; 10" begin="0.3s" dur="0.6s" repeatCount="indefinite" />
+            </rect>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- scroll to top -->
+    <div class="progress-wrap bg-[#00000035] shadow-cool">
+        <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+        <i class="text-white fas fa-chevron-up transform -translate-y-9 translate-x-4"></i>
+    </div>
+
+    <!-- navbar -->
+    <div>
+        <div class="w-full z-30 flex items-center justify-between absolute top-0 p-8 lg:px-40 4xl:px-96" data-aos="fade-down" data-aos-duration="1000">
+            <!-- logo -->
+            <div class=""><a class="text-white text-3xl" href="/">Project Element</a></div>
+            
+            <!-- desktop menu -->
+            <div class="hidden lg:flex items-center text-white justify-between text-xl">
+                <p class="mx-4 border-b-4 border-template-orange"><a href="">Home</a></p>
+                <p class="mx-4 underline-animation"><a href="">Lorem</a></p>
+                <p class="mx-4 underline-animation"><a href="">Ipsum</a></p>
+                <p class="mx-4 underline-animation"><a href="">Dolor</a></p>
+                <p class="mx-4 underline-animation"><a href="">Amet</a></p>
+                <p class="mx-4 underline-animation"><a href="">Consectetur</a></p>
+            </div>
+
+            <!-- cta -->
+            <div class="hidden lg:block"><a class="px-8 py-3 bg-template-orange text-xl text-white hover:bg-white hover:text-black shadow-cool duration-300" href="">Find More</a></div>
+
+            <!-- hamburger -->
+            <button x-on:click="open = ! open" id="hamburger" class="lg:hidden hamburger hamburger--emphatic not-active" type="button" data-status="closed">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+        </div>
+        <!-- mobile menu -->
+        <div id="menu" class="z-20 flex flex-col justify-center bg-template-dark text-white w-screen h-screen lg:hidden absolute top-0 swipe swipe-left p-8 lg:px-40 4xl:px-96">
+            <div class="flex flex-col text-xl">
+                <p class="mt-4"><a href="">Home</a></p>
+                <p class="mt-4"><a href="">Lorem</a></p>
+                <p class="mt-4"><a href="">Ipsum</a></p>
+                <p class="mt-4"><a href="">Dolor sit</a></p>
+                <p class="mt-4"><a href="">Amet</a></p>
+                <p class="mt-4"><a href="">Consectetur</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- hero banner -->
+    <div class="h-screen glitch flex flex-col justify-center text-white filter pb-20" style="background-image: linear-gradient(117deg, #452B2F, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0), #F6611D80, rgba(255, 255, 255, 1)),  url('assets/images/background2.png'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <div class="p-8 lg:px-40 4xl:px-96 lg:w-3/5 z-10">
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <p class="text-sm mb-2 uppercase">Lorem ipsum dolor sit amet</p>
+                <p class="text-6xl lg:text-8xl uppercase font-bold text-gradient">Project <br> <span class="ml-4">Element</span></p>
+                <p class="mt-4 text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni debitis quidem dicta nam nostrum atque ullam minima, commodi nesciunt dolores. Quos odit animi nulla ea deleniti ipsum tempore quibusdam delectus.</p>
+            </div>
+            <div class="lg:flex mt-12" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <div class="mt-12 lg:mt-0 -mr-8 shadow-wrap"><a style="clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);" class="bg-template-orange hover:bg-white hover:text-black drop-shadow duration-300 text-xl uppercase pl-8 pr-12 py-4" href="">Lorem ipsum dolor sit amet</a></div>
+                <div class="mt-12 lg:mt-0 shadow-wrap"><a style="clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);" class="bg-white hover:bg-template-orange text-black hover:text-white drop-shadow duration-300 text-xl uppercase pr-8 pl-12 py-4" href="">Lorem ipsum dolor sit amet</a></div>
+            </div>
+        </div>
+
+        <div class="custom-shape-divider-bottom-1674231059 drop-shadow">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M1200 0L0 0 598.97 114.72 1200 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="custom-shape-divider-bottom-1674231185 drop-shadow">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="glitch__layers">
+            <div class="glitch__layer "></div>
+            <div class="glitch__layer"></div>
+            <div class="glitch__layer"></div>
+        </div>
+    </div>
+
+    <!-- slider -->
+    <div class="bg-gradient-to-b from-white to-template-orange relative p-8 lg:px-40 4xl:px-96 py-20">
+        <p class="text-center font-bold uppercase text-6xl text-gradient2" data-aos="fade-up" data-aos-duration="1000">Lorem ipsum dolor sit amet</p>
+        <p class="mt-8 text-center lg:w-2/3 mx-auto" data-aos="fade-up" data-aos-duration="1000">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus sint fugiat alias non. Doloremque, consequatur hic libero ea alias sequi cum ut aliquid, cumque nulla est commodi quo tenetur corrupti.</p>
+        <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2 h-96 mt-16 rounded-xl shadow-cool">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                <img src="assets/images/background2.png" />
+                </div>
+                <div class="swiper-slide">
+                <img src="assets/images/background3.png" />
+                </div>
+                <div class="swiper-slide">
+                <img src="assets/images/background.png" />
+                </div>
+                <div class="swiper-slide">
+                <img src="assets/images/background2.png" />
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div thumbsSlider="" class="swiper mySwiper h-32 shadow-cool mt-8 mb-40">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+            <img src="assets/images/background2.png" />
+            </div>
+            <div class="swiper-slide">
+            <img src="assets/images/background3.png" />
+            </div>
+            <div class="swiper-slide">
+            <img src="assets/images/background.png" />
+            </div>
+            <div class="swiper-slide">
+            <img src="assets/images/background2.png" />
+            </div>
+        </div>
+        </div>
+        <div class="custom-shape-divider-bottom-1674243922 drop-shadow">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- images with text -->
+    <div class="bg-gradient-to-b from-white to-template-orange relative text-black pt-20 pb-40">
+        <div>
+            <div class="lg:flex py-40 relative">
+                <div class="mb-20 lg:h-3/4 h-1/3 w-1/2 absolute left-0 top-0 transform translate-y-24 rounded-xl shadow-cool" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/background3.png'); background-size: cover; background-position: center; filter: blur(1px) grayscale(100%);"></div>
+                <div data-aos="fade-up" data-aos-duration="1000" class="m-8 h-96 lg:w-3/5 shadow-cool rounded-xl" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/background3.png'); background-size: cover; background-position: center;"></div>
+                <div data-aos="fade-up" data-aos-duration="1000" class="flex flex-col justify-center lg:pl-8 p-8 lg:w-2/5 mt-16 lg:mt-0">
+                    <p class="uppercase">Lorem ipsum</p>
+                    <p class="text-4xl font-bold uppercase mt-2">Lorem ipsum dolor sit amet consectetur</p>
+                    <p class="leading-8 text-xl mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dignissimos nostrum quaerat voluptates consequatur corrupti repellat asperiores impedit dolor ut nam repellendus labore fugit maxime tempore, non ipsa. Consequuntur, eum?</p>
+                    <div class="mt-12"><a class="bg-white hover:bg-template-orange hover:text-white shadow-cool duration-300 text-xl uppercase px-8 py-4" href="">Lorem ipsum</a></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="lg:flex flex-row-reverse py-40 relative">
+                <div class="mb-20 lg:h-3/4 h-1/3 w-1/2 absolute right-0 top-0 transform translate-y-24 rounded-xl shadow-cool" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/background2.png'); background-size: cover; background-position: center; filter: blur(1px) grayscale(100%);"></div>
+                <div data-aos="fade-up" data-aos-duration="1000" class="m-8 h-96 lg:w-3/5 shadow-cool rounded-xl" style="background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('assets/images/background2.png'); background-size: cover; background-position: center;"></div>
+                <div data-aos="fade-up" data-aos-duration="1000" class="flex flex-col justify-center lg:pl-8 p-8 lg:w-2/5 mt-16 lg:mt-0 text-right">
+                    <p class="uppercase">Lorem ipsum</p>
+                    <p class="text-4xl font-bold uppercase mt-2">Lorem ipsum dolor sit amet consectetur</p>
+                    <p class="leading-8 text-xl mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dignissimos nostrum quaerat voluptates consequatur corrupti repellat asperiores impedit dolor ut nam repellendus labore fugit maxime tempore, non ipsa. Consequuntur, eum?</p>
+                    <div class="mt-12"><a class="bg-white hover:bg-template-orange hover:text-white shadow-cool duration-300 text-xl uppercase px-8 py-4" href="">Lorem ipsum</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="custom-shape-divider-bottom-1674243922 drop-shadow">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- blog -->
+    <div class="bg-gradient-to-t from-template-dark to-template-brown relative text-white p-8 lg:px-40 4xl:px-96 pb-40">
+        <p class="font-bold uppercase text-4xl text-gradient" data-aos="fade-up" data-aos-duration="1000">Latest news</p>
+        <div class="lg:flex mt-8">
+            <!-- first news -->
+            <div data-aos="fade-up" data-aos-duration="1000" class="lg:w-1/2 lg:mr-8 p-8 rounded-3xl shadow-cool relative mb-8 lg:mb-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url('assets/images/bg.webp');">
+                <p class="opacity-50">Lorem Ipsum dolor sit amet</p>
+                <p class="text-4xl text-template-aqua font-bold mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                <div class="lg:absolute mt-24 lg:mt-0 bottom-8 leading-8">
+                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus amet nemo quae nesciunt, minima iste cumque ducimus, doloribus nostrum, eveniet vero commodi mollitia possimus iure necessitatibus voluptate aliquid soluta. Exercitationem.</p>
+                    <a class="text-template-aqua text-xl hover:text-white duration-300" href="">Read more <i class="fa-solid fa-right-long ml-2"></i></a>
+                </div>
+            </div>
+            <!-- other news -->
+            <div data-aos="fade-up" data-aos-duration="1000" class="lg:w-1/2">
+                <div class="p-8 rounded-3xl shadow-cool bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url('assets/images/bg2.webp');">
+                    <p class="opacity-50">Lorem Ipsum dolor sit amet</p>
+                    <p class="text-2xl my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>    
+                    <a class="text-template-aqua hover:text-white duration-300 text-xl" href="">Read more <i class="fa-solid fa-right-long ml-2"></i></a>
+                </div>
+                <div class="p-8 rounded-3xl shadow-cool mt-8 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url('assets/images/bg3.webp');">
+                    <p class="opacity-50">Lorem Ipsum dolor sit amet</p>
+                    <p class="text-2xl my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>  
+                    <a class="text-template-aqua hover:text-white duration-300 text-xl" href="">Read more <i class="fa-solid fa-right-long ml-2"></i></a>  
+                </div>
+                <div class="p-8 rounded-3xl shadow-cool mt-8 bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 1), rgba(0, 0, 0, 1)), url('assets/images/bg4.webp');">
+                    <p class="opacity-50">Lorem Ipsum dolor sit amet</p>
+                    <p class="text-2xl my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>    
+                    <a class="text-template-aqua hover:text-white duration-300 text-xl" href="">Read more <i class="fa-solid fa-right-long ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- button -->
+        <div class="mt-16" data-aos="fade-up" data-aos-duration="1000"><a class="bg-template-aqua hover:bg-white shadow-cool-color duration-300 px-8 py-4 text-black rounded-xl" href="">Lorem ipsum dolor sit amet</a></div>
+    </div>
+
+    <!-- counter section -->
+    <div class="bg-gradient-to-b from-template-dark to-template-brown relative text-white p-8 lg:px-40 4xl:px-96">
+        <p data-aos="fade-up" data-aos-duration="1000" class="text-center font-bold uppercase text-4xl text-gradient">Lorem ipsum dolor sit amet</p>
+        <p class="mt-8 text-center lg:w-2/3 mx-auto" data-aos="fade-up" data-aos-duration="1000">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, quod, enim repellat facilis accusantium maxime id at, consequuntur similique alias omnis! Fuga corrupti optio sequi magnam dolor consequatur, aspernatur earum.</p>
+        <!-- counter -->
+        <div data-aos="fade-up" data-aos-duration="1000" class="flex flex-wrap items-center justify-around mt-16">
+            <div class="text-center w-60 mt-8 lg:mt-0">
+                <p class="text-gradient font-bold text-4xl count">270</p>
+                <p class="text-2xl">Lorem</p>
+            </div>
+            <i class="fa-regular fa-circle-dot fontb-bold text-gradient hidden lg:block"></i>
+            <div class="text-center w-60 mt-8 lg:mt-0">
+                <p class="text-gradient font-bold text-4xl"><span class="count">29</span> k</p>
+                <p class="text-2xl">Ipsum</p>
+            </div>
+            <i class="fa-regular fa-circle-dot fontb-bold text-gradient hidden lg:block"></i>
+            <div class="text-center w-60 mt-8 lg:mt-0">
+                <p class="text-gradient font-bold text-4xl count">483</p>
+                <p class="text-2xl">Dolor</p>
+            </div>
+            <i class="fa-regular fa-circle-dot fontb-bold text-gradient hidden lg:block"></i>
+            <div class="text-center w-60 mt-8 lg:mt-0">
+                <p class="text-gradient font-bold text-4xl count">97</p>
+                <p class="text-2xl">Sit</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- contact form -->
+    <div class="flex py-40 bg-gradient-to-t from-template-dark to-template-brown">
+        <div class="lg:w-1/2 rounded-r-3xl shadow-cool lg:bg-fixed bg-cover bg-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('assets/images/bg2.webp');"></div>
+        <div data-aos="fade-up" data-aos-duration="1000" class="relative text-white p-16 lg:w-1/2">
+            <div>
+                <p class="text-4xl text-gradient mb-8 font-bold uppercase">Contact us</p>
+                <form>
+                    <label>
+                        <input id="name" type="text" placeholder="Name" class="bg-transparent border-b-2 p-4 border-template-aqua w-full"/>
+                    </label>
+                    <label>
+                        <input id="last_name" type="text" placeholder="Last Name" class="bg-transparent border-b-2 p-4 mt-8 border-template-aqua w-full"/>
+                    </label>
+                    <label>
+                        <input id="tel" type="text" placeholder="Phone" class="bg-transparent border-b-2 p-4 mt-8 border-template-aqua w-full"/>
+                    </label>
+                    <label>
+                        <input id="email" type="text" placeholder="Email" class="bg-transparent border-b-2 p-4 mt-8 border-template-aqua w-full"/>
+                    </label>
+                    <label>
+                        <textarea id="message" type="text" placeholder="Message" class="bg-transparent border-b-2 p-4 mt-8 border-template-aqua w-full" rows="4" cols="60"></textarea>
+                        <p class="mt-2 opacity-50 text-sm">Lorem ipsum dolor sit amet</p>
+                    </label>
+                </form>
+                <div class="mt-12"><a class="bg-template-aqua hover:bg-white shadow-cool-color duration-300 px-8 py-4 text-black rounded-xl" href="">Submit now</a></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- final svg -->
+    <div class="bg-gradient-to-b from-template-dark to-template-brown relative text-white p-8 lg:px-40 4xl:px-96">
+        <div class="custom-shape-divider-bottom-1674067544" style="filter: drop-shadow(5px 15px 10px #000000);">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        <div class="custom-shape-divider-bottom-1673963890" style="filter: drop-shadow(5px 15px 10px #000000);">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div>
+        <div class="bg-template-dark text-white p-8 lg:px-40 4xl:px-96">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16 pt-8">
+                <div class="text-sm text-center lg:text-left">
+                    <p class="uppercase font-bold text-template-aqua">Contacts</p>
+                    <p class="mt-2">© Copyright 2023 — Designed & Developed by Elemently</p>
+                    <p class="mt-2 underline"><a href="">loremipsum@dolor.sit</a></p>
+                </div>
+                <div class="text-sm text-center">
+                    <p class="uppercase font-bold">Lorem ipsum dolor sit</p>
+                    <a class="block underline mt-2" href="">Privacy Policy</a>
+                    <a class="block underline mt-2" href="">Cookie Policy</a>
+                </div>
+                <div class="text-sm text-center">
+                    <p class="uppercase font-bold">Lorem ipsum dolor sit</p>
+                    <div class="flex justify-between mx-auto mt-4 text-template-aqua" style="width: fit-content;">
+                        <i class="fa-brands fa-facebook-f mx-8"></i>
+                        <i class="fa-brands fa-instagram mx-8"></i>
+                        <i class="fa-brands fa-twitter mx-8"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+        <!-- aos -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <!-- custom javascript -->
+    <script type="text/javascript" src="assets/main.js"></script>
+</body>
+
+</html>
